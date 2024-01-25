@@ -4,8 +4,10 @@
     "strict": true,
     "baseUrl": "./src",
     "paths": {
+      "app-assets": ["./assets"],
+      "app-components": ["./components"],
       "app-screens": ["./screens"],
-      "app-assets": ["./assets"]
+      "app-styles": ["./styles"]
     }
   }
 }

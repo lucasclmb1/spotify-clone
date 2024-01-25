@@ -1,0 +1,1 @@
+export { baseButton } from './common'

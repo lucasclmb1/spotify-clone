@@ -1,10 +1,10 @@
 import { StatusBar } from 'expo-status-bar'
-import { GettingStarted } from './src/screens';
+import { Login } from './src/screens';
 
 export default function App() {
   return (
     <>
-      <GettingStarted />
+      <Login />
       <StatusBar style="light" translucent />
     </>
   );
