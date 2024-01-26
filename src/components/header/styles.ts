@@ -2,8 +2,11 @@ import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
   header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     paddingHorizontal: 30,
     top: 40,
+    width: '100%'	
   },
   backButton: {
     alignItems: 'center',
@@ -13,4 +16,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     width: 32,
   },
+  invisibleView: {
+    width: 32
+  }
 })
