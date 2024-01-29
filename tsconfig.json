@@ -6,8 +6,10 @@
     "paths": {
       "app-assets": ["./assets"],
       "app-components": ["./components"],
+      "app-constants": ["./constants"],
       "app-screens": ["./screens"],
-      "app-styles": ["./styles"]
+      "app-services": ["./services"],
+      "app-styles": ["./styles"],
     }
   }
 }

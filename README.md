@@ -7,5 +7,8 @@ Este é um projeto de clone da interface do usuário do Spotify desenvolvido usa
 O projeto está organizado da seguinte maneira:
 
 - `src/`: Contém o código-fonte do aplicativo.
-  - `screens/`: Telas principais do aplicativo.
   - `assets/`: Recursos estáticos, como imagens e fontes.
+  - `components/`: Componentes reutilizáveis da aplicação.
+  - `constants/`: Contém arquivos que declaram constantes utilizadas em toda a aplicação.
+  - `screens/`: Telas principais do aplicativo.
+  - `services/`: módulos que lidam com a comunicação com APIs externas.
