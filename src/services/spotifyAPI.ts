@@ -1,16 +1,16 @@
 import axios from "axios"
-import { getData } from './asyncStorage'
-
-const TOKEN = getData('ACCESS_TOKEN')
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const api = axios.create({
   baseURL: 'https://api.spotify.com/',
 })
 
-function getUser(token: string) {
+async function getUser() {
+  const ACCESS_TOKEN = await AsyncStorage.getItem('ACCESS_TOKEN')
+
   return api.get('v1/me', {
     headers: {
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${ACCESS_TOKEN}`
     }
   })
 }

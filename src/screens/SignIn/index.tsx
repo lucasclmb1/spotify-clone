@@ -1,23 +1,66 @@
+import { useEffect } from "react"
 import { Text, TextInput, TouchableOpacity, View } from "react-native"
 import { EyeSlash } from "phosphor-react-native"
+import * as WebBrowser from 'expo-web-browser'
+import { makeRedirectUri, useAuthRequest } from 'expo-auth-session'
 import { useNavigation } from '@react-navigation/native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Header, AlternativeLogin } from 'app-components'
-import { getToken, saveData } from "app-services"
+import { CLIENT_ID } from "app-constants"
+import { getToken } from "app-services"
 import { styles } from "./styles"
+
+WebBrowser.maybeCompleteAuthSession()
 
 export default function SignIn() {
   const navigation = useNavigation()
+  const discovery = {
+    authorizationEndpoint: 'https://accounts.spotify.com/authorize',
+    tokenEndpoint: 'https://accounts.spotify.com/api/token',
+  }
+  const scopes = [
+    'user-read-email',
+    'user-library-read',
+    'user-read-recently-played',
+    'user-top-read',
+    'playlist-read-private',
+    'playlist-read-collaborative',
+    'playlist-modify-public',
+  ]
+  const [request, response, promptAsync] = useAuthRequest(
+    {
+      clientId: CLIENT_ID,
+      scopes: scopes,
+      usePKCE: false,
+      redirectUri: makeRedirectUri({
+        scheme: 'exp://192.168.1.114:8081',
+      }),
+    },
+    discovery
+  );
 
-  async function handleSignIn() {
+  async function authenticate(authorizationCode: string) {
     try {
-      const { data } = await getToken()
-      saveData('ACCESS_TOKEN', data.access_token)
-      console.log(data.access_token)
-      navigation.navigate('Home')
+      const data = await getToken(authorizationCode)
+      
+      if (data.access_token) {
+        const expirationDate = new Date(data.expires_in).getTime()
+
+        AsyncStorage.setItem('ACCESS_TOKEN', data.access_token)
+        AsyncStorage.setItem('EXPIRATION_DATE', expirationDate.toString())
+        navigation.navigate('Home')
+      }
     } catch(e) {
       console.error(e)
     }
   }
+
+  useEffect(() => {
+    if (response?.type === 'success') {
+      const { code } = response.params
+      authenticate(code)
+    }
+  }, [response])
 
   return (
     <View style={styles.container}>
@@ -33,7 +76,7 @@ export default function SignIn() {
           </View>
         </View>
         <Text style={styles.recoveryText} onPress={() => {}}>Recovery Password</Text>
-        <TouchableOpacity style={styles.signInButton} onPress={handleSignIn}><Text style={styles.signInButtonText}>Sign In</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.signInButton} onPress={() => promptAsync()}><Text style={styles.signInButtonText}>Sign In</Text></TouchableOpacity>
         <AlternativeLogin />
       </View>
     </View>

@@ -1,22 +1,14 @@
 import React, { useEffect } from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native'
-import { useNavigation } from '@react-navigation/native'
+import { Text, View } from 'react-native'
 import { Header, Footer } from 'app-components'
-import { getData, getUser } from 'app-services'
+import { getUser } from 'app-services'
 import { styles } from './styles'
 
 export default function Profile() {
 
   async function getUserInfo() {
-    try {
-      const token = await getData('ACCESS_TOKEN')
-      if (token) {
-        const { data } = await getUser(token)
-        console.log(data)
-      }
-    } catch (e: any) {
-      console.error(e.message)
-    }
+    const user = await getUser()
+    console.log(user)
   }
 
   useEffect(() => {
