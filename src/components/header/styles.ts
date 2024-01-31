@@ -2,10 +2,13 @@ import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
   header: {
+    alignItems: 'flex-end',
+    backgroundColor: '#343434',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    paddingBottom: 10,
     paddingHorizontal: 30,
-    top: 40,
+    height: 80,
     width: '100%'	
   },
   backButton: {

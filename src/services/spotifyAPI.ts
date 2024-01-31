@@ -15,4 +15,15 @@ async function getUser() {
   })
 }
 
-export { getUser }
+async function getUserPublicPlaylists() {
+  const ACCESS_TOKEN = await AsyncStorage.getItem('ACCESS_TOKEN')
+  
+  return api.get('v1/me/playlists', {
+    headers: {
+      'Authorization': `Bearer ${ACCESS_TOKEN}`
+    }
+  })
+  
+}
+
+export { getUser, getUserPublicPlaylists }

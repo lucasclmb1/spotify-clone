@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     gap: 10,
+    marginTop: 25,
     width: '100%',
   },
   separatorText: {

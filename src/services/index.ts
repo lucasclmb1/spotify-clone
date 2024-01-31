@@ -1,5 +1,4 @@
-import { getToken } from './token'
-import { getData, saveData } from './asyncStorage'
-import { getUser } from './spotifyAPI'
+import { getToken, getAuthorizationCode } from './token'
+import { getUser, getUserPublicPlaylists } from './spotifyAPI'
 
-export { getToken, getUser, getData, saveData }
+export { getToken, getAuthorizationCode, getUser, getUserPublicPlaylists }

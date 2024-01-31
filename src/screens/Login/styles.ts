@@ -28,14 +28,9 @@ export const styles = StyleSheet.create({
     marginVertical: 25,
     textAlign: 'center'
   },
-  buttonContainer: {
-    flex: 1,
-    flexDirection: 'row'
-  },
-  registerButton: baseButton as ViewStyle,
   signInButton: {
     ...baseButton,
-    backgroundColor: '#1C1B1B'
+    width: '90%'
   } as ViewStyle,
   buttonText: {
     color: '#FFFFFF',

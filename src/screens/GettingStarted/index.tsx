@@ -1,13 +1,14 @@
 import { Image, Text, TouchableOpacity, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { Billie, SpotifyLogo } from 'app-assets'
+import { PAGE_NAMES } from 'app-constants'
 import { styles } from './styles'
 
 export default function GettingStarted() {
   const navigation = useNavigation()
 
   const handleGetStarted = () => {
-    navigation.navigate('Login')
+    navigation.navigate(PAGE_NAMES.LOGIN)
   }
 
   return (
