@@ -6,8 +6,7 @@ export default function Favorite() {
 
   return (
     <View style={styles.container}>
-      <Header hasLogo={true}/>
-      <Text style={styles.mainText}>Favorite</Text>
+      <Header hasOptionButton={true} centerText='Favorite'/>
       <Footer currentPage='Favorite'/>
     </View>
   );

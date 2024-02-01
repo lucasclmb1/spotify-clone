@@ -1,10 +1,17 @@
-import { TouchableOpacity, View } from "react-native"
-import { CaretLeft } from "phosphor-react-native"
+import { TouchableOpacity, Text, View } from "react-native"
+import { CaretLeft, DotsThreeVertical } from "phosphor-react-native"
 import { useNavigation } from '@react-navigation/native'
 import { SpotifyLogo } from 'app-assets'
 import { styles } from "./styles";
 
-export default function Header({ hasLogo = false }) {
+interface HeaderProps {
+  hasLogo?: boolean
+  hasOptionButton?: boolean
+  centerText?: string
+  backgroundColor?: string
+}
+
+export default function Header({ hasLogo = false, hasOptionButton = false, backgroundColor = '', centerText = '' }: HeaderProps) {
   const navigation = useNavigation()
 
   const handleBack = () => { 
@@ -12,12 +19,17 @@ export default function Header({ hasLogo = false }) {
   }
 
   return (
-    <View style={styles.header}>
+    <View style={[styles.header, { backgroundColor: backgroundColor }]}>
       <TouchableOpacity style={styles.backButton} onPress={handleBack}>
         <CaretLeft size={24} color="#DDDDDD" />
       </TouchableOpacity>
       {hasLogo && <SpotifyLogo width={100} height={33} />}
-      <View style={styles.invisibleView}></View>
+      {centerText && <Text style={styles.topText}>{centerText}</Text>}
+      {hasOptionButton ? 
+        <TouchableOpacity style={styles.optionButton}>
+          <DotsThreeVertical size={28} color="#DDDDDD"/>
+        </TouchableOpacity> 
+        : <View style={styles.invisibleView}></View>}
     </View>
   );
 }

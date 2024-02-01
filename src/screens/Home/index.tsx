@@ -6,7 +6,7 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
-      <Header hasLogo={true}/>
+      <Header hasLogo={true} hasOptionButton={true}/>
       <Text style={styles.mainText}>Home</Text>
       <Footer currentPage='Home'/>
     </View>

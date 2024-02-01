@@ -3,7 +3,6 @@ import { StyleSheet } from 'react-native'
 export const styles = StyleSheet.create({
   header: {
     alignItems: 'flex-end',
-    backgroundColor: '#343434',
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingBottom: 10,
@@ -19,7 +18,18 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     width: 32,
   },
+  optionButton: {
+    alignItems: 'center',
+    height: 32,
+    justifyContent: 'center',
+    width: 32
+  },
   invisibleView: {
     width: 32
+  },
+  topText: {
+    color: '#E6E6E6',
+    fontSize: 20,
+    fontWeight: '700',
   }
 })

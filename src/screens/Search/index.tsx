@@ -6,8 +6,7 @@ export default function Search() {
 
   return (
     <View style={styles.container}>
-      <Header hasLogo={true}/>
-      <Text style={styles.mainText}>Search</Text>
+      <Header hasOptionButton={true} centerText='Search'/>
       <Footer currentPage='Search'/>
     </View>
   );

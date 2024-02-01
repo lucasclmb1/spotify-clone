@@ -106,7 +106,7 @@ export default function Profile() {
 
   return (
     <View style={styles.container}>
-      <Header hasLogo={true}/>
+      <Header hasOptionButton={true} backgroundColor='#343434' centerText='Profile'/>
       {renderProfileContainer()}
       {renderPlaylistContainer()}
       <Footer currentPage='Profile'/>
