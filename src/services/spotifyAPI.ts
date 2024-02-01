@@ -1,14 +1,14 @@
 import axios from "axios"
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
-const api = axios.create({
-  baseURL: 'https://api.spotify.com/',
+const spotifyAPI = axios.create({
+  baseURL: 'https://api.spotify.com/v1/',
 })
 
 async function getUser() {
   const ACCESS_TOKEN = await AsyncStorage.getItem('ACCESS_TOKEN')
 
-  return api.get('v1/me', {
+  return spotifyAPI.get('me', {
     headers: {
       'Authorization': `Bearer ${ACCESS_TOKEN}`
     }
@@ -18,12 +18,21 @@ async function getUser() {
 async function getUserPublicPlaylists() {
   const ACCESS_TOKEN = await AsyncStorage.getItem('ACCESS_TOKEN')
   
-  return api.get('v1/me/playlists', {
+  return spotifyAPI.get('me/playlists', {
     headers: {
       'Authorization': `Bearer ${ACCESS_TOKEN}`
     }
   })
-  
 }
 
-export { getUser, getUserPublicPlaylists }
+async function getUserSavedTracks() {
+  const ACCESS_TOKEN = await AsyncStorage.getItem('ACCESS_TOKEN')
+  
+  return spotifyAPI.get('me/tracks', {
+    headers: {
+      'Authorization': `Bearer ${ACCESS_TOKEN}`
+    }
+  })
+}
+
+export { getUser, getUserPublicPlaylists, getUserSavedTracks }

@@ -1,4 +1,10 @@
 import { getToken, getAuthorizationCode } from './token'
-import { getUser, getUserPublicPlaylists } from './spotifyAPI'
+import { getUser, getUserPublicPlaylists, getUserSavedTracks } from './spotifyAPI'
 
-export { getToken, getAuthorizationCode, getUser, getUserPublicPlaylists }
+export {
+  getToken,
+  getAuthorizationCode,
+  getUser,
+  getUserPublicPlaylists,
+  getUserSavedTracks
+}
