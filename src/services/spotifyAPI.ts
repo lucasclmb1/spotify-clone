@@ -35,4 +35,35 @@ async function getUserSavedTracks() {
   })
 }
 
-export { getUser, getUserPublicPlaylists, getUserSavedTracks }
+async function getNewReleases() {
+  const ACCESS_TOKEN = await AsyncStorage.getItem('ACCESS_TOKEN')
+  
+  return spotifyAPI.get('browse/new-releases', {
+    headers: {
+      'Authorization': `Bearer ${ACCESS_TOKEN}`
+    }
+  })
+}
+
+async function getRecommendedTracks() {
+  const ACCESS_TOKEN = await AsyncStorage.getItem('ACCESS_TOKEN')
+  
+  return spotifyAPI.get('recommendations', {
+    headers: {
+      'Authorization': `Bearer ${ACCESS_TOKEN}`
+    }
+  })
+}
+
+async function getRecommendedGenres() {
+  const ACCESS_TOKEN = await AsyncStorage.getItem('ACCESS_TOKEN')
+  
+  return spotifyAPI.get('recommendations/available-genre-seeds',
+  {
+    headers: {
+      'Authorization': `Bearer ${ACCESS_TOKEN}`
+    }
+  })
+}
+
+export { getUser, getUserPublicPlaylists, getUserSavedTracks, getNewReleases, getRecommendedTracks, getRecommendedGenres }

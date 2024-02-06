@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 import { ScrollView, Text, Image, View } from 'react-native'
 import { Header, Footer } from 'app-components'
 import { getUser, getUserPublicPlaylists } from 'app-services'
