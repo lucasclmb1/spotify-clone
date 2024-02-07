@@ -66,4 +66,15 @@ async function getRecommendedGenres() {
   })
 }
 
-export { getUser, getUserPublicPlaylists, getUserSavedTracks, getNewReleases, getRecommendedTracks, getRecommendedGenres }
+async function getSearchResults(searchQuery: string) {
+  const ACCESS_TOKEN = await AsyncStorage.getItem('ACCESS_TOKEN')
+  
+  return spotifyAPI.get(`/search?q=${searchQuery}&type=track`,
+  {
+    headers: {
+      'Authorization': `Bearer ${ACCESS_TOKEN}`
+    }
+  })
+}
+
+export { getUser, getUserPublicPlaylists, getUserSavedTracks, getNewReleases, getRecommendedTracks, getRecommendedGenres, getSearchResults }
